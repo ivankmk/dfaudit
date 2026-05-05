@@ -5,6 +5,7 @@ description = "Modern dataframe auditing visuals built with pandas and matplotli
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
+    "jinja2>=3.1.0",
     "matplotlib>=3.9.0",
     "pandas>=2.2.0",
 ]

@@ -1,4 +1,4 @@
-"""Configuration objects for dfaudit visual style and behavior."""
+"""Runtime configuration (non-visual defaults)."""
 
 from dataclasses import dataclass
 
