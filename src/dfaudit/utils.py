@@ -33,4 +33,14 @@ STYLES: dict[str, OverviewColors] = {
         "grid": "#f1faee",
         "muted": "#9aa7b5",
     },
+    "light": {
+        "header": "#e8edf2",
+        "missing_data": "#bc4749",
+        "soft_missing_data": "#f4a0b5",
+        "highlight": "#4a7fc1",
+        "df_bg": "#ffffff",
+        "text": "#1d2d44",
+        "grid": "#cccccc",
+        "muted": "#6b7a8d",
+    },
 }

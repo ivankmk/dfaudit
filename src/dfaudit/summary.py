@@ -65,14 +65,16 @@ def overview(
     colors = STYLES.get(style)
     data = _compute(dataframe)
     pct_cols = [c for c in data.columns if c.endswith("_pct") and c != "top3_pct"]
-    fmt = {"missing": "{:,.0f}", "soft_missing": "{:,.0f}", "unique": "{:,.0f}", "memory_mb": "{:.4f}"}
+    fmt = {"missing": "{:,.0f}", "soft_missing": "{:,.0f}", "unique": "{:,.0f}"}
     fmt |= {c: "{:.1f}%" for c in pct_cols}
     c = colors or {}
+    bar_cols = ["missing_pct", "soft_missing_pct", "unique_pct"]
     styler = (
         data.style.format(fmt)
         .bar(subset=["missing_pct"], color=c.get("missing_data", "#bc4749"), vmin=0, vmax=100)
         .bar(subset=["soft_missing_pct"], color=c.get("soft_missing_data", "#F9B2D7"), vmin=0, vmax=100)
         .bar(subset=["unique_pct"], color=c.get("highlight", "#5e7ac4"))
+        .set_properties(subset=bar_cols, **{"width": "90px", "min-width": "90px", "max-width": "90px"})
     )
 
     if colors:
