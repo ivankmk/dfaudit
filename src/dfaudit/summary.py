@@ -62,6 +62,17 @@ def overview(
     *,
     style: str = "default",
 ) -> Styler:
+    """Return a styled pandas table summarising the dataframe column by column.
+
+    Columns reported: dtype, missing count and %, soft-missing count and % (sentinels
+    and whitespace-only strings that pandas does not count as null), unique count and %,
+    mode value and %, top-3 values with their frequencies.
+    Rows sorted by missing % descending, then unique count descending.
+
+    Args:
+        dataframe: Input dataframe to audit.
+        style: Named style from STYLES — "vivid" (dark), "light", or "default" (no custom styling).
+    """
     colors = STYLES.get(style)
     data = _compute(dataframe)
     pct_cols = [c for c in data.columns if c.endswith("_pct") and c != "top3_pct"]

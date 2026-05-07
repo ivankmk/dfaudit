@@ -36,6 +36,17 @@ def missing_matrix(
     style: str = "default",
     figsize: tuple[int, int] | None = None,
 ) -> _HTMLFigure:
+    """Render a two-panel missingness matrix for the dataframe.
+
+    Left panel: barcode view — each column is a row, each pixel a data point,
+    red means missing. Columns ordered by missing % ascending (most missing on top).
+    Right panel: horizontal bar chart of missing % per column, scaled 0–100%.
+
+    Args:
+        dataframe: Input dataframe to audit.
+        style: Named style from STYLES — "vivid" (dark), "light", or "default" (matplotlib defaults).
+        figsize: Figure size as (width, height). Auto-scales height by column count if not set.
+    """
     colors = STYLES.get(style)
     c_missing = colors.get("missing_data", "#bc4749") if colors else "#bc4749"
     c_present = colors.get("df_bg", "#e8edf2") if colors else "#e8edf2"

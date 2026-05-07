@@ -1,3 +1,5 @@
+<img src="docs/assets/logo.png" alt="dfaudit" width="200"/>
+
 # dfaudit
 
 `dfaudit` is an open source Python package for modern, polished dataframe auditing visuals.
@@ -7,17 +9,14 @@ It is designed for:
 - distribution and correlation checks,
 - clean matplotlib-based output suitable for notebooks and reports.
 
-## Status
+## Usage
 
-Project scaffold is in place. Business logic is intentionally not implemented yet.
+```python
+import dfaudit as dfa
 
-## Planned package layout
-
-- `src/dfaudit/`: main package
-- `src/dfaudit/plotting/`: plotting modules
-- `tests/`: test suite
-- `docs/`: documentation notes
-- `examples/`: runnable example notebooks/scripts (to be added)
+dfa.overview(df, style="vivid")
+dfa.missing_matrix(df, style="vivid")
+```
 
 ## Development
 
