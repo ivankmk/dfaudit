@@ -34,6 +34,7 @@ def missing_matrix(
     dataframe: pd.DataFrame,
     *,
     style: str = "default",
+    figsize: tuple[int, int] | None = None,
 ) -> _HTMLFigure:
     colors = STYLES.get(style)
     c_missing = colors.get("missing_data", "#bc4749") if colors else "#bc4749"
@@ -46,7 +47,8 @@ def missing_matrix(
     order = miss_pct.sort_values(ascending=True).index.tolist()
     miss = dataframe[order].isna().to_numpy().T
 
-    fig = Figure(figsize=(14, max(4, len(order) * 0.4 + 2)), constrained_layout=True)
+    size = figsize or (14, max(4, len(order) * 0.4 + 2))
+    fig = Figure(figsize=size, constrained_layout=True)
     fig.patch.set_facecolor(c_bg)
 
     gs = fig.add_gridspec(1, 2, width_ratios=[3.25, 1.1])
@@ -63,6 +65,11 @@ def missing_matrix(
     ax.set_xlabel("Row Index", color=c_text)
     ax.set_title("Missingness Matrix", loc="left", pad=12, color=c_text)
     ax.tick_params(colors=c_text)
+    ax.hlines(
+        np.arange(0.5, len(order) - 0.5),
+        xmin=-0.5, xmax=len(dataframe) - 0.5,
+        color=c_grid, alpha=0.25, linewidth=0.8,
+    )
     ax.grid(False)
     ax.spines[:].set_visible(False)
 
