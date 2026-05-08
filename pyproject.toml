@@ -1,7 +1,7 @@
 [project]
 name = "dfaudit"
 version = "0.1.0"
-description = "Modern dataframe auditing visuals built with pandas and matplotlib."
+description = "Audit your pandas DataFrame before you trust it — missing values, cardinality and top categories in one call."
 readme = "README.md"
 license = { text = "MIT" }
 authors = [{ name = "Ivan Kumeyko", email = "ivan@ivankmk.tech" }]
@@ -19,8 +19,10 @@ classifiers = [
     "Topic :: Scientific/Engineering :: Information Analysis",
 ]
 dependencies = [
+    "build>=1.5.0",
     "matplotlib>=3.9.0",
     "pandas>=2.2.0",
+    "twine>=6.2.0",
 ]
 
 [project.optional-dependencies]
@@ -39,6 +41,17 @@ build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/dfaudit"]
+
+[tool.hatch.build.targets.sdist]
+exclude = [
+    "/.gitignore",
+    "/.python-version",
+    "/uv.lock",
+    "/docs",
+    "/tests",
+    "/notebook.ipynb",
+    "*.gitignore",
+]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
