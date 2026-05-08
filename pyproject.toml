@@ -3,9 +3,22 @@ name = "dfaudit"
 version = "0.1.0"
 description = "Modern dataframe auditing visuals built with pandas and matplotlib."
 readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Ivan Kumeyko", email = "ivan@ivankmk.tech" }]
 requires-python = ">=3.10"
+keywords = [
+    "pandas", "dataframe", "data quality", "data audit", "data profiling",
+    "missing data", "exploratory data analysis", "eda", "data validation",
+    "data summary", "notebook", "jupyter", "matplotlib", "visualization",
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Developers",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+]
 dependencies = [
-    "jinja2>=3.1.0",
     "matplotlib>=3.9.0",
     "pandas>=2.2.0",
 ]
@@ -15,6 +28,10 @@ dev = [
     "pytest>=8.0.0",
     "ruff>=0.6.0",
 ]
+
+[project.urls]
+Homepage = "https://github.com/ivankmk/dfaudit"
+Repository = "https://github.com/ivankmk/dfaudit"
 
 [build-system]
 requires = ["hatchling>=1.25.0"]
