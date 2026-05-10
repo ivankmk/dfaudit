@@ -33,6 +33,7 @@ df = pd.read_csv("https://raw.githubusercontent.com/pandas-dev/pandas/master/doc
 
 dfa.overview(df)
 dfa.missing_matrix(df)
+dfa.unique_matrix(df)
 ```
 
 ## What you get
@@ -60,6 +61,17 @@ A matrix plot that shows *where* your data is missing across every row, with a b
 
 ```python
 dfa.missing_matrix(df, style="vivid")
+```
+
+### `unique_matrix(df)` - Row-level unique value visualization
+
+A matrix plot that shows the distribution of unique values across every row and column. Low-cardinality columns (≤ 10 unique values) get a distinct color per value — so a binary column like `Sex` renders in two colors, a 3-class column like `Pclass` in three. High-cardinality columns (`Name`, `Ticket`, `PassengerId`) appear in a uniform gray, making it immediately obvious which columns are categorical vs. continuous or near-unique identifiers. A bar chart on the right shows the exact unique value count per column.
+
+![unique matrix](docs/assets/screenshot_unique_matrix.png)
+
+```python
+dfa.unique_matrix(df)
+dfa.unique_matrix(df, style="vivid", max_colors=8)
 ```
 
 ## Why I built this
